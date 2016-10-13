@@ -11,13 +11,13 @@
 				<?php
 						foreach ($lesFraisForfait as $unFrais)
 						{
-							$idFrais = $unFrais['idfrais'];
+							$idFrais = $unFrais['idFrais'];
 							$libelle = $unFrais[	'libelle'];
 							$quantite = $unFrais['quantite'];
 					?>
 							<div class="form-group">
 								<label for="idFrais"><?php echo $libelle ?></label>
-								<input class="form-control" placeholder="<?php echo $quantite?>" type="text" id="idFrais" name="lesFrais[<?php echo $idFrais?>]""<?php echo $quantite?>"<?php if ($lesInfosFicheFrais['idEtat']!='CR') { echo 'disabled';} ?> >
+								<input class="form-control" placeholder="<?php echo $quantite?>" type="text" id="idFrais" name="lesFrais[<?php echo $idFrais?>]""<?php echo $quantite?>"<?php if ($lesInfosFicheFrais['idEtat']!='CR')  ?> >
 							</div>
 
 					<?php
