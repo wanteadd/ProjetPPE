@@ -2,7 +2,7 @@
 
 date_default_timezone_set("UTC");
 include("vues/v_sommaire.php");
-$idVisiteur = $_SESSION['idVisiteur'];
+$idPersonne = $_SESSION['idPersonne'];
 $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
@@ -10,8 +10,8 @@ $action = $_REQUEST['action'];
 switch($action){
 	case 'saisirFrais':{
             echo "ok";
-		if($pdo->estPremierFraisMois($idVisiteur,$mois)){
-			$pdo->creeNouvellesLignesFrais($idVisiteur,$mois);
+		if($pdo->estPremierFraisMois($idPersonne,$mois)){
+			$pdo->creeNouvellesLignesFrais($idPersonne,$mois);
 		}
 		break;
 	}
@@ -19,7 +19,7 @@ switch($action){
                 
 		$lesFrais = $_REQUEST['lesFrais'];
 		if(lesQteFraisValides($lesFrais)){
-	  	 	$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
+	  	 	$pdo->majFraisForfait($idPersonne,$mois,$lesFrais);
 		}
 		else{
 			ajouterErreur("Les valeurs des frais doivent �tre num�riques");
@@ -36,7 +36,7 @@ switch($action){
 			include("vues/v_erreurs.php");
 		}
 		else{
-			$pdo->creeNouveauFraisHorsForfait($idVisiteur,$mois,$libelle,$dateFrais,$montant);
+			$pdo->creeNouveauFraisHorsForfait($idPersonne,$mois,$libelle,$dateFrais,$montant);
 		}
 		break;
 	}
@@ -46,9 +46,9 @@ switch($action){
 		break;
 	}
 }
-$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
-$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
-$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$mois);
+$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idPersonne,$mois);
+$lesFraisForfait= $pdo->getLesFraisForfait($idPersonne,$mois);
+$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idPersonne,$mois);
 include("vues/v_listeFraisForfait.php");
 include("vues/v_listeFraisHorsForfait.php");
 

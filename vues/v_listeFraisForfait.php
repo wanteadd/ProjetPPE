@@ -12,7 +12,7 @@
 						foreach ($lesFraisForfait as $unFrais)
 						{
 							$idFrais = $unFrais['idFrais'];
-							$libelle = $unFrais[	'libelle'];
+							$libelle = $unFrais['libelle'];
 							$quantite = $unFrais['quantite'];
 					?>
 							<div class="form-group">
