@@ -76,7 +76,7 @@
 		?>
     </table>
 	
-	<a href="javascript:window.print()">Imprimer cette page</a>
+	
 	
   </div>
            
