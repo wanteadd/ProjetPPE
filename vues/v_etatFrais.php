@@ -1,7 +1,7 @@
 ﻿<div class="col-md-6">
 	<div class="content-box-large">
 		<div class="panel-heading">
-			<div class="panel-title"><h2>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> :</h2></div>
+                    <div class="panel-title"><h2>Fiche de frais du mois <?php echo donneLeMois($numMois)." ".$numAnnee?> :</h2></div>
 		</div>
 		<div class="panel-body">
 				</br></br>
@@ -76,9 +76,10 @@
 		?>
     </table>
 	
-	
+	<a href="javascript:window.print()">Imprimer cette page</a>
 	
   </div>
+           
   </div>
 
 

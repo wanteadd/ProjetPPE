@@ -195,4 +195,13 @@ function nbErreurs(){
 	   return count($_REQUEST['erreurs']);
 	}
 }
+
+function donneLeMois($numMois){
+    
+    
+    $lesMois = array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
+    
+    return $lesMois[$numMois-1];
+    
+}
 ?>
