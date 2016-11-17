@@ -123,7 +123,7 @@ class PdoGsb{
 */
 	public function getLesFraisForfait($idPersonne, $mois){
 		$req = "select FraisForfait.id as idFrais, FraisForfait.libelle as libelle, 
-		LigneFraisForfait.quantite as quantite from LigneFraisForfait inner join FraisForfait 
+		LigneFraisForfait.quantite as quantite, LigneFraisForfait.montant as montant from LigneFraisForfait inner join FraisForfait 
 		on FraisForfait.id = LigneFraisForfait.idFraisForfait
 		where LigneFraisForfait.idPersonne ='$idPersonne' and LigneFraisForfait.mois='$mois' 
 		order by LigneFraisForfait.idFraisForfait";	
