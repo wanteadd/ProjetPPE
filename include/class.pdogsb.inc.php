@@ -57,7 +57,7 @@ class PdoGsb{
 */
 	public function getInfosPersonne($login, $mdp){
 		$req = "select Personne.id as id, Personne.nom as nom, Personne.prenom as prenom, Personne.idProfil as idProfil from Personne 
-		where Personne.login='$login' and Personne.mdp='$mdp'";
+		where Personne.login='$login' and Personne.mdp=SHA1('$mdp')";
 		$rs = PdoGsb::$monPdo->query($req);
 		$ligne = $rs->fetch();
 		return $ligne;
