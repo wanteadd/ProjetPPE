@@ -15,7 +15,7 @@
 							$numMois =  $unMois['numMois'];
 							if($mois == $moisASelectionner){
 							?>
-							<option selected value="<?php echo $mois ?>"><?php echo  $numMois."/".$numAnnee ?> </option>
+                                            <option selected value="<?php echo $mois ?>"><?php echo donneLeMois($numMois)." ".$numAnnee ?> </option>
 							<?php 
 							}
 							else{ ?>
