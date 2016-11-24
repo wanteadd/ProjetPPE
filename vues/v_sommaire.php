@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="assets/profilcss/profil.css" rel="stylesheet">
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
@@ -38,7 +39,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php?uc=gererFrais&action=saisirFrais">Saisir mes fiches de frais </a></li>
+        <li class="active dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Saisir <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="index.php?uc=gererFrais&action=saisirFrais">Fiches frais forfait</a></li>
+            <li><a href="#">Fiches frait hors forfait</a></li>
+        </ul>
+        </li>
         <li class="active"><a href="index.php?uc=etatFrais&action=selectionnerMois">Mes fiches de frais</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
