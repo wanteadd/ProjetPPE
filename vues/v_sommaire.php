@@ -46,7 +46,7 @@
             <li><a href="index.php?uc=gererFrais&action=saisirFraisHorsForfait">Fiches frait hors forfait</a></li>
         </ul>
         </li>
-        <li class="active"><a href="index.php?uc=etatFrais&action=selectionnerMois">Mes fiches de frais</a></li>      
+        <li class="active"><a href="index.php?uc=etatFrais&action=selectionnerMois">Consulter mes fiches frais</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
 		  <li><a><?php echo $_SESSION['prenom']."  ".$_SESSION['nom']?></a></li>
