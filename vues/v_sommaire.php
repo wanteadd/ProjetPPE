@@ -42,8 +42,8 @@
         <li class="active dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Saisir <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="index.php?uc=gererFrais&action=saisirFrais">Fiches frais forfait</a></li>
-            <li><a href="#">Fiches frait hors forfait</a></li>
+            <li><a href="index.php?uc=gererFrais&action=saisirFraisForfait">Fiches frais forfait</a></li>
+            <li><a href="index.php?uc=gererFrais&action=saisirFraisHorsForfait">Fiches frait hors forfait</a></li>
         </ul>
         </li>
         <li class="active"><a href="index.php?uc=etatFrais&action=selectionnerMois">Mes fiches de frais</a></li>      
