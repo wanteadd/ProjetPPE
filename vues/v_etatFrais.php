@@ -77,7 +77,7 @@
 		?>
     </table>
 	
-	<a href="PDF.php" target="_blank"><p>Generer un PDF</p></a>
+	<a href="./include/PDF.php" target="_blank"><p>Generer un PDF</p></a>
 	
   </div>
            

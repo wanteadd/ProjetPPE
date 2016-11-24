@@ -8,7 +8,7 @@ $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
 $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idPersonne,$mois);
-$lesFraisForfait= $pdo->getLesFraisForfait($idPersonne,$mois);
+$lesFraisForfait= $pdo->getLesFraisForfaitMois($idPersonne,$mois);
 $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idPersonne,$mois);
 switch($action){
 	case 'saisirFraisForfait':{

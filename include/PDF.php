@@ -1,6 +1,6 @@
 <?php
 require('FPDFMysql.php');
-class PDF extends FPDFMysql
+class PDF extends PDF_MySQL_Table
 {
 function Header()
 {
@@ -14,7 +14,7 @@ function Header()
 }
 
 //Connexion à la base
-mysql_connect('mysql:host=localhost','root','mysql');
+mysql_connect('localhost','root','mysql');
 mysql_select_db('gsbaplifrais');
 
 $pdf=new PDF();
