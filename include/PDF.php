@@ -1,6 +1,6 @@
 <?php
 require('FPDFMysql.php');
-class PDF extends PDF_MySQL_Table
+class PDF extends FPDFMysql
 {
 function Header()
 {
@@ -14,7 +14,7 @@ function Header()
 }
 
 //Connexion à la base
-mysql_connect('localhost','root','mysql');
+mysql_connect('mysql:host=localhost','root','mysql');
 mysql_select_db('gsbaplifrais');
 
 $pdf=new PDF();
@@ -25,7 +25,7 @@ $pdf->Table("select FraisForfait.id as idFrais, FraisForfait.libelle as libelle,
 		where LigneFraisForfait.idPersonne ='$idPersonne' and LigneFraisForfait.mois='$mois' 
 		order by LigneFraisForfait.idFraisForfait");
 $pdf->AddPage();
-$pdf->AddPage();
+//$pdf->AddPage();
 //Premier tableau : imprime toutes les colonnes de la requête
 $pdf->Table("select * from LigneFraisHorsForfait where LigneFraisHorsForfait.idPersonne ='$idPersonne' 
 		and LigneFraisHorsForfait.mois = '$mois' ");
