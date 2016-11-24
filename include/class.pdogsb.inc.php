@@ -281,6 +281,13 @@ class PdoGsb{
 		PdoGsb::$monPdo->exec($req);
 	}
 	
+        public function creeNouveauFraisForfait($idPersonne,$mois,$libelle,$date,$montant)
+        {
+            $dateFr = dateFrancaisVersAnglais($date);
+		$req = "insert into LigneFraisHorsForfait 
+		values(DEFAULT,'$idPersonne','$mois','$libelle','$dateFr','$montant')";
+		PdoGsb::$monPdo->exec($req);
+        }
 
 /**
  * Supprime le frais hors forfait dont l'id est passé en argument
@@ -347,6 +354,7 @@ class PdoGsb{
 		PdoGsb::$monPdo->exec($req);
 	}
 	
+        
 	
 }
 ?>

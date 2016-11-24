@@ -46,7 +46,7 @@
 			<legend>Nouvel élément hors forfait</legend>			
 		</div>
 		<div class="panel-body">
-			<form class="form-horizontal" role="form" action="index.php?uc=gererFrais&action=validerCreationFrais" method="post">
+			<form class="form-horizontal" role="form" action="index.php?uc=gererFrais&action=validerCreationFraisHorsForfait" method="post">
 				<div class="form-group">
 					<div class="form-group">
 					<label for="txtDateHF"> Date (jj/mm/aaaa): </label>

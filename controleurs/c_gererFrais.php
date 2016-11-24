@@ -40,7 +40,7 @@ switch($action){
 		}
 	  break;
 	}
-	case 'validerCreationFrais':{
+	case 'validerCreationFraisHorsForfait':{
 		$dateFrais = $_REQUEST['dateFrais'];
 		$libelle = $_REQUEST['libelle'];
 		$montant = $_REQUEST['montant'];
