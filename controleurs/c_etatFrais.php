@@ -20,7 +20,7 @@ switch($action){
 		$moisASelectionner = $leMois;
 		include("vues/v_listeMois.php");
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idPersonne,$leMois);
-		$lesFraisForfait= $pdo->getLesFraisForfait($idPersonne,$leMois);
+		$lesFraisForfait= $pdo->getLesFraisForfaitMois($idPersonne,$leMois);
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idPersonne,$leMois);
 		$numAnnee =substr( $leMois,0,4);
 		$numMois =substr( $leMois,4,2);

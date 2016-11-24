@@ -90,7 +90,7 @@ class PdoGsb{
 */
 	public function getLesFraisHorsForfait($idPersonne,$mois){
 	    $req = "select * from LigneFraisHorsForfait where LigneFraisHorsForfait.idPersonne ='$idPersonne' 
-		and LigneFraisHorsForfait.mois = '$mois' ";	
+		and LigneFraisHorsForfait.mois = '$mois' order by date DESC ";	
 		$res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		$nbLignes = count($lesLignes);
@@ -121,7 +121,7 @@ class PdoGsb{
  * @param $mois sous la forme aaaamm
  * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
 */
-	public function getLesFraisForfait($idPersonne, $mois){
+	public function getLesFraisForfaitMois($idPersonne, $mois){
 		$req = "select FraisForfait.id as idFrais, FraisForfait.libelle as libelle, 
 		LigneFraisForfait.quantite as quantite, 
                 LigneFraisForfait.montant as montant from LigneFraisForfait inner join FraisForfait 
@@ -233,8 +233,8 @@ class PdoGsb{
 		$lesIdFrais = $this->getLesIdFrais();
 		foreach($lesIdFrais as $uneLigneIdFrais){
 			$unIdFrais = $uneLigneIdFrais['idFrais'];
-			$req = "insert into LigneFraisForfait(idPersonne,mois,idFraisForfait,quantite) 
-			values('$idPersonne','$mois','$unIdFrais',0)";
+			$req = "insert into LigneFraisForfait(idPersonne,mois,idFraisForfait,quantite,date) 
+			values('$idPersonne','$mois','$unIdFrais',0,now())";
 			PdoGsb::$monPdo->exec($req);
 		 }
 	}
