@@ -7,6 +7,9 @@ $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
+$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idPersonne,$mois);
+$lesFraisForfait= $pdo->getLesFraisForfait($idPersonne,$mois);
+$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idPersonne,$mois);
 switch($action){
 	case 'saisirFraisForfait':{
             echo "ok";
@@ -14,6 +17,7 @@ switch($action){
 			$pdo->creeNouvellesLignesFrais($idPersonne,$mois);
 		}
                 include("vues/v_listeFraisForfait.php");
+                
 		break;
 	}
         case 'saisirFraisHorsForfait':{
@@ -55,9 +59,7 @@ switch($action){
 		break;
 	}
 }
-$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idPersonne,$mois);
-$lesFraisForfait= $pdo->getLesFraisForfait($idPersonne,$mois);
-$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idPersonne,$mois);
+
 
 
 
