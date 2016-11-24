@@ -100,6 +100,29 @@ class PdoGsb{
 		}
 		return $lesLignes; 
 	}
+        /**
+ * Retourne sous forme d'un tableau associatif toutes les lignes de frais forfait
+ * concernées par les deux arguments
+ 
+ * La boucle foreach ne peut être utilisée ici car on procède
+ * à une modification de la structure itérée - transformation du champ date-
+ 
+ * @param $idPersonne 
+ * @param $mois sous la forme aaaamm
+ * @return tous les champs des lignes de frais forfait sous la forme d'un tableau associatif 
+*/
+	public function getLesFraisForfaitJour($idPersonne,$mois){
+	    $req = "select * from LigneFraisForfait where LigneFraisForfait.idPersonne ='$idPersonne' 
+		and LigneFraisForfait.mois = '$mois' order by date DESC ";	
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		$nbLignes = count($lesLignes);
+		for ($i=0; $i<$nbLignes; $i++){
+			$date = $lesLignes[$i]['date'];
+			$lesLignes[$i]['date'] =  dateAnglaisVersFrancais($date);
+		}
+		return $lesLignes; 
+	}
 /**
  * Retourne le nombre de justificatif d'un Personne pour un mois donné
  
