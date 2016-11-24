@@ -66,7 +66,7 @@
 			<div class="horizontal-form">
 				<input class="btn btn-primary" id="ajouter" type="submit" value="Ajouter" <?php if ($lesInfosFicheFrais['idEtat']!='CR') { echo 'disabled';} ?> />
 				<input class="btn btn-primary" id="effacer" type="reset" value="Effacer" />
-      
+                                <a href="PDF.php" target="_blank"><p>Generer un PDF</p></a>
 			</div>
         
 			</form>
