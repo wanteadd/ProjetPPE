@@ -76,9 +76,9 @@
 		  $a.='</tr></table>';
 		?>
     </table>
-	
-	<a href="./include/PDF.php" target="_blank"><p>Generer un PDF</p></a>
-	
+    <?php
+	echo '<a href="include/PDF.php?idPersonne='.$idPersonne.'&mois='.$numMois.$numAnnee.'" target="_blank"><p>Generer un PDF</p></a>'
+    ?>
   </div>
            
   </div>

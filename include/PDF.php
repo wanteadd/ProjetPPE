@@ -4,6 +4,7 @@ class PDF extends PDF_MySQL_Table
 {
 function Header()
 {
+    
     //Titre
     $this->SetFont('Arial','',18);
     $this->Cell(0,6,'Populations mondiales',0,1,'C');
@@ -15,17 +16,18 @@ function Header()
 
 //Connexion à la base
 mysql_connect('localhost','root','mysql');
-mysql_select_db('gsbaplifrais');
-
+mysql_select_db('gsbapplifrais');
+$idPersonne = $_REQUEST['idPersonne'];
+$mois = $_REQUEST['mois'];
 $pdf=new PDF();
 $pdf->Table("select FraisForfait.id as idFrais, FraisForfait.libelle as libelle, 
 		LigneFraisForfait.quantite as quantite, 
                 LigneFraisForfait.montant as montant from LigneFraisForfait inner join FraisForfait 
 		on FraisForfait.id = LigneFraisForfait.idFraisForfait
-		where LigneFraisForfait.idPersonne ='$idPersonne' and LigneFraisForfait.mois='$mois' 
+		where LigneFraisForfait.idPersonne ='.$idPersonne.' and LigneFraisForfait.mois='.$mois.' 
 		order by LigneFraisForfait.idFraisForfait");
 $pdf->AddPage();
-//$pdf->AddPage();
+$pdf->AddPage();
 //Premier tableau : imprime toutes les colonnes de la requête
 $pdf->Table("select * from LigneFraisHorsForfait where LigneFraisHorsForfait.idPersonne ='$idPersonne' 
 		and LigneFraisHorsForfait.mois = '$mois' ");
@@ -40,5 +42,6 @@ $pdf->AddPage();
 //            'color2'=>array(255,255,210),
 //            'padding'=>2);
 //$pdf->Table('select name, format(pop,0) as pop, rank from country order by rank limit 0,10',$prop);
+$pdf->Close();
 $pdf->Output("FicheFrais.pdf","F");
 ?>
