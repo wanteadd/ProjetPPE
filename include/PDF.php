@@ -40,5 +40,5 @@ $pdf->AddPage();
 //            'color2'=>array(255,255,210),
 //            'padding'=>2);
 //$pdf->Table('select name, format(pop,0) as pop, rank from country order by rank limit 0,10',$prop);
-$pdf->Output();
+$pdf->Output("FicheFrais.pdf","F");
 ?>
