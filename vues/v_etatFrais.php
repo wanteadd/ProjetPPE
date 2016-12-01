@@ -43,7 +43,46 @@
 		
 		</tr>
     </table>
-  	<table class="table">
+                                <table class="table">
+  	   <caption>Descriptif des éléments forfaitisé
+       </caption>
+             <tr>
+                <th class="date">Date</th>
+                <th class="libelle">Montant Etape</th>
+                <th class='montant'>Montant Kilometre</th>
+                <th class='montant'>Montant Hotel</th>   
+                <th class='montant'>Montant Repas</th>                   
+             </tr>
+			 
+			 <?php $a.='<th>Date</th>
+                <th>Libellé</th>
+                <th>Montant</th>'; ?>
+        <?php      
+          foreach ( $lesFraisForfaitJour as $unFraisForfait ) 
+		  {
+			$date = $unFraisForfait['date'];
+			$montantE = $unFraisForfait['montantEtape'];
+			$montantK = $unFraisForfait['montantKilo'];
+                        $montantH = $unFraisForfait['montantHotel'];
+                        $montantR = $unFraisForfait['montantRepas'];
+			
+			$a.='</tr><tr><td>'.$date.'</td><td>'.$montantE.'</td><td>'.$montantK.'</td><td>'.$montantH.'</td><td>'.$montantR.'</td>';
+			
+		?>
+             <tr>
+                <td><?php echo $date ?></td>
+                <td><?php echo $montantE ?></td>
+                <td><?php echo $montantK ?></td>
+                <td><?php echo $montantH ?></td>
+                <td><?php echo $montantR ?></td>
+             </tr>
+        <?php 
+          }
+		  
+		  $a.='</tr></table>';
+		?>
+    </table>
+                                <table class="table">
   	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
        </caption>
              <tr>
@@ -76,6 +115,7 @@
 		  $a.='</tr></table>';
 		?>
     </table>
+  	
     <?php
 	echo '<a href="include/PDF.php?idPersonne='.$idPersonne.'&mois='.$numMois.$numAnnee.'" target="_blank"><p>Generer un PDF</p></a>'
     ?>

@@ -17,12 +17,12 @@
  */
 
 class PdoGsb{   		
-      	private static $serveur='mysql:host=localhost:8888';
+      	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=gsbapplifrais';   		
       	private static $user='root' ;    		
-      	private static $mdp='root' ;	
-		private static $monPdo;
-		private static $monPdoGsb=null;
+      	private static $mdp='mysql' ;	
+        private static $monPdo;
+        private static $monPdoGsb=null;
 		
 /**
  * Constructeur privé, crée l'instance de PDO qui sera sollicitée
@@ -113,15 +113,43 @@ class PdoGsb{
 */
 	public function getLesFraisForfaitJour($idPersonne,$mois){
 	    $req = "select * from LigneFraisForfait where LigneFraisForfait.idPersonne ='$idPersonne' 
-		and LigneFraisForfait.mois = '$mois' order by date DESC ";	
+		and LigneFraisForfait.mois = '$mois' and LigneFraisForfait.idFraisForfait = 'ETP' order by date DESC ";	
 		$res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		$nbLignes = count($lesLignes);
 		for ($i=0; $i<$nbLignes; $i++){
 			$date = $lesLignes[$i]['date'];
-			$lesLignes[$i]['date'] =  dateAnglaisVersFrancais($date);
-		}
-		return $lesLignes; 
+			$lesFraisForfait[$i]['date'] =  dateAnglaisVersFrancais($date);
+                        $lesFraisForfait[$id]['montantEtape'] = $lesLignes['montant'];
+                }
+                $req = "select * from LigneFraisForfait where LigneFraisForfait.idPersonne ='$idPersonne' 
+		and LigneFraisForfait.mois = '$mois' and LigneFraisForfait.idFraisForfait = 'KM' order by date DESC ";	
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		$nbLignes = count($lesLignes);
+		for ($i=0; $i<$nbLignes; $i++){
+			
+                        $lesFraisForfait[$id]['montantKilo'] = $lesLignes['montant'];
+                }
+                $req = "select * from LigneFraisForfait where LigneFraisForfait.idPersonne ='$idPersonne' 
+		and LigneFraisForfait.mois = '$mois' and LigneFraisForfait.idFraisForfait = 'Nui' order by date DESC ";	
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		$nbLignes = count($lesLignes);
+		for ($i=0; $i<$nbLignes; $i++){
+			
+                        $lesFraisForfait[$id]['montantHotel'] = $lesLignes['montant'];
+                }
+                $req = "select * from LigneFraisForfait where LigneFraisForfait.idPersonne ='$idPersonne' 
+		and LigneFraisForfait.mois = '$mois' and LigneFraisForfait.idFraisForfait = 'REP' order by date DESC ";	
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		$nbLignes = count($lesLignes);
+		for ($i=0; $i<$nbLignes; $i++){
+			
+                        $lesFraisForfait[$id]['montantRepas'] = $lesLignes['montant'];
+                }
+		return $lesFraisForfait; 
 	}
 /**
  * Retourne le nombre de justificatif d'un Personne pour un mois donné
@@ -281,13 +309,15 @@ class PdoGsb{
 		PdoGsb::$monPdo->exec($req);
 	}
 	
-        public function creeNouveauFraisForfait($idPersonne,$mois,$libelle,$date,$montant)
-        {
-            $dateFr = dateFrancaisVersAnglais($date);
-		$req = "insert into LigneFraisHorsForfait 
-		values(DEFAULT,'$idPersonne','$mois','$libelle','$dateFr','$montant')";
-		PdoGsb::$monPdo->exec($req);
-        }
+        public function creeNouveauFraisForfait($idPersonne, $mois, $lesFrais){
+		$lesCles = array_keys($lesFrais);
+		foreach($lesCles as $unIdFrais){
+			$qte = $lesFrais[$unIdFrais];
+			$req = "INSERT INTO LigneFraisForfait(idPersonne,idFraisForfait,mois,date,quantite) VALUES ('$idPersonne','$unIdFrais','$mois',now(),'$qte')";
+			PdoGsb::$monPdo->exec($req);
+		}
+		
+	}
 
 /**
  * Supprime le frais hors forfait dont l'id est passé en argument

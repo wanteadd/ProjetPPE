@@ -25,7 +25,7 @@
 						}
 					?>
 				</div>
-				<input class="btn btn-primary" id="ok" type="submit" value="Valider" size="20" <?php if ($lesInfosFicheFrais['idEtat']!='CR') { echo 'disabled';} ?>/>
+				<input class="btn btn-primary" id="ok" type="submit" value="enregistrer" size="20" <?php if ($lesInfosFicheFrais['idEtat']!='CR') { echo 'disabled';} ?>/>
 			  </div>
 			</form>
 		</div>
